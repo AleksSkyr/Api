@@ -1,14 +1,18 @@
 package com.example.Hw.service;
 
-import com.example.Hw.Faculty;
+import com.example.Hw.model.Faculty;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+
 class FacultyServiceTest {
 
-    FacultyService service = new FacultyService();
+
+    FacultyService service = new FacultyService(repository);
+
+    private Long id;
 
     @Test
     void testAdd() {
@@ -59,5 +63,12 @@ class FacultyServiceTest {
         assertFalse(service.remove(9999L));
 
     }
-}
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
+    }
 }

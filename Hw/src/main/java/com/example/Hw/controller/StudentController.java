@@ -1,6 +1,6 @@
 package com.example.Hw.controller;
 
-import com.example.Hw.Student;
+import com.example.Hw.model.Student;
 import com.example.Hw.service.StudentService;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,12 +27,12 @@ public class StudentController {
     }
 
     @PutMapping
-    public Student update(@RequestBody Student student) {
+    public Student update(@RequestBody Student student, @PathVariable long id) {
         return service.update(student);
     }
 
     @DeleteMapping("/{id}")
-    public boolean remove(@PathVariable long id) {
+    public Student remove(@PathVariable long id) {
         return service.remove(id);
     }
 

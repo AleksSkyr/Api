@@ -1,6 +1,6 @@
 package com.example.Hw.controller;
 
-import com.example.Hw.Faculty;
+import com.example.Hw.model.Faculty;
 import com.example.Hw.service.FacultyService;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,7 +32,7 @@ public class FacultyController {
     }
 
     @DeleteMapping("/{id}")
-    public boolean remove(@PathVariable long id) {
+    public Faculty remove(@PathVariable long id) {
         return service.remove(id);
     }
 
