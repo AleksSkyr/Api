@@ -16,11 +16,18 @@ public class Faculty {
     private String name;
     private String color;
 
+//    public Faculty() {
+//    }
+//
+//    public Faculty(Long id, String name, String color) {
+//        this.id = id;
+//        this.name = name;
+//        this.color = color;
+//    }
 
     public Long getId() {
         return id;
     }
-
     public void setId(Long id) {
         this.id = id;
     }
@@ -28,7 +35,6 @@ public class Faculty {
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
@@ -36,19 +42,6 @@ public class Faculty {
     public String getColor() {
         return color;
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Faculty faculty)) return false;
-        return Objects.equals(getId(), faculty.getId()) && Objects.equals(getName(), faculty.getName()) && Objects.equals(getColor(), faculty.getColor());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getId(), getName(), getColor());
-    }
-
     public void setColor(String color) {
         this.color = color;
     }
@@ -61,5 +54,4 @@ public class Faculty {
                 ", color='" + color + '\'' +
                 '}';
     }
-
 }
