@@ -5,6 +5,7 @@ import com.example.Hw.model.Faculty;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
+
 @Service
 public class FacultyService {
 

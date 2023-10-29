@@ -1,5 +1,6 @@
 package com.example.Hw.controller;
 
+import com.example.Hw.model.Faculty;
 import com.example.Hw.model.Student;
 import com.example.Hw.service.StudentService;
 import org.springframework.web.bind.annotation.*;
@@ -31,19 +32,23 @@ public class StudentController {
         return service.update(student);
     }
 
-    // localhost:8080/student/2
     @DeleteMapping("/{id}")
     public Student remove(@PathVariable long id) {
         return service.remove(id);
     }
 
-    // localhost:8080/student/byAge?age=20
+    @GetMapping("/{studentId}/faculty")
+    public Faculty facultyByStudent(@PathVariable long studentId) {
+        return service.get(studentId).getFaculty();
+    }
+
     @GetMapping("/byAge")
     public Collection<Student> byAge(@RequestParam int age) {
         return service.filterByAge(age);
     }
-    @GetMapping("/byAll")
-    public Collection<Student> byAll () {
-        return service.returnAll();
+
+    @GetMapping("/byAgeBetween")
+    public Collection<Student> byAgeBetween(@RequestParam int min, @RequestParam int max) {
+        return service.filterByAgeBetween(min, max);
     }
 }

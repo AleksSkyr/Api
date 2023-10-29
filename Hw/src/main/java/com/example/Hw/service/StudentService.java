@@ -8,42 +8,40 @@ import java.util.Collection;
 
 @Service
 public class StudentService {
-    private final StudentRepository repository;
-    public StudentService(StudentRepository repository) {
-        this.repository = repository;
+
+    private final StudentRepository studentRepository;
+
+    public StudentService(StudentRepository studentRepository) {
+        this.studentRepository = studentRepository;
     }
 
     public Student add(Student student) {
-        return repository.save(student);
+        return studentRepository.save(student);
     }
 
     public Student get(long id) {
-        return repository.findById(id).orElse(null);
+        return studentRepository.findById(id).orElse(null);
     }
 
     public Student remove(long id) {
-        var studentTemporary = repository.findById(id).orElse(null);
-        if (studentTemporary != null) {
-            repository.delete(studentTemporary);
+        var entity = studentRepository.findById(id).orElse(null);
+        if (entity != null) {
+            studentRepository.delete(entity);
         }
-        return studentTemporary;
+        return entity;
     }
 
     public Student update(Student student) {
-        var studentTemporary = repository.findById(student.getId()).orElse(null);
-        if (studentTemporary != null) {
-            repository.save(student);;
-        }
-        return student;
+        return studentRepository.findById(student.getId())
+                .map(entity -> studentRepository.save(student))
+                .orElse(null);
     }
 
     public Collection<Student> filterByAge(int age) {
-        return  repository.findAllByAge(age);
+        return studentRepository.findByAge(age);
     }
 
-    public Collection<Student> returnAll() {
-        return repository.findAllBy();
+    public Collection<Student> filterByAgeBetween(int min, int max) {
+        return studentRepository.findAllByAgeBetween(min, max);
     }
-
-
 }

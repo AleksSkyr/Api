@@ -1,5 +1,6 @@
 package com.example.Hw.service;
 
+import com.example.Hw.Exeptions.StudentNotFoundException;
 import com.example.Hw.Repositoriy.AvatarRepository;
 import com.example.Hw.Repositoriy.StudentRepository;
 import com.example.Hw.model.Avatar;
